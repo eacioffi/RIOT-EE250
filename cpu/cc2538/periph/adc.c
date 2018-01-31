@@ -87,11 +87,11 @@ int adc_sample(adc_t line, adc_res_t res)
           adca->cc2538_adc_adccon1.ADCCON1, adca->ADCCON2, adca->ADCCON3);
 
     /* Poll/wait until end of conversion */
-    gpio_init(GPIO_PIN(PORT_D,2), GPIO_IN_ANALOG);
-    gpio_set(GPIO_PIN(PORT_D,2));
+    //gpio_init(GPIO_PIN(PORT_D,2), GPIO_IN_ANALOG);
+    //gpio_set(GPIO_PIN(PORT_D,2));
     while ((adca->cc2538_adc_adccon1.ADCCON1 &
             SOC_ADC_ADCCON1_EOC_MASK) == 0) {}
-    gpio_clear(GPIO_PIN(PORT_D,2));
+    //gpio_clear(GPIO_PIN(PORT_D,2));
     /* Read result after conversion completed,
      * reading SOC_ADC_ADCH last will clear SOC_ADC_ADCCON1.EOC */
     int16_t sample = adca->ADCL & SOC_ADC_ADCL_MASK;
